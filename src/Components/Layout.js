@@ -2,14 +2,12 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import background from '../images/background.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Col, Row, Container} from 'reactstrap'
-import 'augmented-ui/augmented.css';
+import {Col, Row} from 'reactstrap'
+// import 'augmented-ui/augmented.css';
 import Particles from 'react-particles-js';
 import Terminal from './Terminal';
 import NavBar from './NavBar';
 import {Helmet} from 'react-helmet';
-import Footer from './Footer';
-import SideBar from './SideBar';
 
 const Background = styled.div`
   background:
@@ -67,6 +65,7 @@ function Layout({children}) {
     <Background>
       <Helmet>
         <link rel="stylesheet" href="https://use.typekit.net/app2ftr.css"/>
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/augmented-ui/augmented.css"/>
       </Helmet>
       {!terminalOpen && <AutoParticles
         params={{

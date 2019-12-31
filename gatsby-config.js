@@ -1,29 +1,21 @@
 require('dotenv').config({
   path: `.env`,
-})
+});
 
-const prismicHtmlSerializer = require('./src/gatsby/htmlSerializer')
+const website = require('./config/website');
 
-const website = require('./config/website')
-
-const pathPrefix = website.pathPrefix === '/' ? '' : website.pathPrefix
+const pathPrefix = website.pathPrefix === '/' ? '' : website.pathPrefix;
+const deployProtocol = process.env.DEPLOY_PROTOCOL || 'https';
+const deployHost = process.env.DEPLOY_HOSTNAME || 'fursquared.com';
+const siteUrl = `${deployProtocol}://${deployHost}`;
 
 module.exports = {
   /* General Information */
-  pathPrefix: website.pathPrefix,
   siteMetadata: {
-    siteUrl: website.url + pathPrefix, // For gatsby-plugin-sitemap
-    pathPrefix,
     title: website.title,
-    titleAlt: website.titleAlt,
     description: website.description,
-    banner: website.logo,
-    headline: website.headline,
-    siteLanguage: website.siteLanguage,
-    ogLanguage: website.ogLanguage,
     author: website.author,
-    twitter: website.twitter,
-    facebook: website.facebook,
+    siteUrl: siteUrl
   },
   /* Plugins */
   plugins: [

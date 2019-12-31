@@ -13,6 +13,7 @@ const PersonContainer = styled.div`
 
     display: flex;
     flex-direction: ${props => props.pull === 'right' ? 'row' : 'row-reverse'};
+    align-items: center;
     
     @media (max-width: 768px) {
       justify-content: center;
@@ -51,6 +52,7 @@ const PersonContainer = styled.div`
 
 const PersonImage = styled.div`
   width: 20%;
+  margin: 1rem 0.5rem;
   @media (max-width: 768px) {
     display: none;
   }
@@ -68,8 +70,6 @@ const PersonBio = styled.div`
 `;
 
 function Person({node, pull}) {
-  console.log(node, pull);
-
   return (
     <PersonContainer pull={pull}>
       <div className={`person-aug`} augmented-ui="tr-clip bl-clip tl-clip br-clip exe">

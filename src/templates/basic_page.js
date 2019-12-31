@@ -37,9 +37,11 @@ export const query = graphql`
                         path
                         primary_link_label
                         primary_link {
-                            _linkType
                             __typename
                             ... on PRISMIC__ExternalLink {
+                                url
+                            }
+                            ... on PRISMIC__FileLink {
                                 url
                             }
                         }
@@ -47,10 +49,44 @@ export const query = graphql`
                         content
                         secondary_link_label
                         secondary_link {
-                            _linkType
-                            __typename
                             ...on PRISMIC__ExternalLink {
                                 url
+                            }
+                            ... on PRISMIC__FileLink {
+                                url
+                            }
+                        }
+                        body {
+                            ... on PRISMIC_Basic_pageBody2_column_content {
+                                type
+                                label
+                                primary {
+                                    primary_title
+                                    primary_content
+                                    title_1
+                                    image_1
+                                    content_1
+                                    title_2
+                                    image_2
+                                    content_2
+                                }
+                            }
+                            ... on PRISMIC_Basic_pageBody3_column_content {
+                                type
+                                label
+                                primary {
+                                    primary_title
+                                    primary_content
+                                    title_1
+                                    image_1
+                                    content_1
+                                    title_2
+                                    image_2
+                                    content_2
+                                    title_3
+                                    image_3
+                                    content_3
+                                }
                             }
                         }
                     }

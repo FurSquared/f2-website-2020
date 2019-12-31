@@ -1,13 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import styled from 'styled-components';
 import background from '../images/background.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Col, Row} from 'reactstrap'
-// import 'augmented-ui/augmented.css';
 import Particles from 'react-particles-js';
 import Terminal from './Terminal';
 import NavBar from './NavBar';
 import {Helmet} from 'react-helmet';
+import MobileDetect from 'mobile-detect';
+import Footer from './Footer';
 
 const Background = styled.div`
   background:
@@ -18,11 +19,17 @@ const Background = styled.div`
     url('${background}');
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: #fff;
   background-attachment: fixed;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  // min-height: 100%;
+  min-height: 100vh;
+  // margin-top: -120px;
+  // padding-top: 120px;
   overflow-x: hidden;
-  overflow-y: auto;
+  // overflow-y: auto;
+  position: relative;
 `;
 
 export const Content = styled.div`
@@ -30,6 +37,7 @@ export const Content = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
   
   font-family: obviously, sans-serif;
   font-style: normal;
@@ -39,7 +47,7 @@ export const Content = styled.div`
     color: #fff;
   }
   
-  a {
+  a h1, h2, h3, h4, h5, b, strong {
     color: #b7a43a;
   }
 `;
@@ -53,66 +61,78 @@ const AutoParticles = styled(Particles)`
 `;
 
 const Body = styled.div`
-  margin-top: 150px;
+  margin: 150px 0;
   height: 100%;
-  width: 100%;
+  // overflow-y: scroll;
+  // overflow-x: hidden;
+`;
+
+const StyledRow = styled(Row)`
+  // height: 100%;
 `;
 
 function Layout({children}) {
   const [terminalOpen, setTerminalOpen] = useState(false);
+  const navBarRef = useRef(null);
+
+  const md = new MobileDetect(window.navigator.userAgent);
 
   return (
-    <Background>
-      <Helmet>
-        <link rel="stylesheet" href="https://use.typekit.net/app2ftr.css"/>
-        <link rel="stylesheet" type="text/css" href="https://unpkg.com/augmented-ui/augmented.css"/>
-      </Helmet>
-      {!terminalOpen && <AutoParticles
-        params={{
-          "particles": {
-            "number": {
-              "value": 160,
-              "density": {
-                "enable": false
-              }
-            },
-            "size": {
-              "value": 3,
-              "random": true,
-              "anim": {
-                "speed": 4,
-                "size_min": 0.3
-              }
-            },
-            "line_linked": {
-              "enable": false
-            },
-            "move": {
-              "random": true,
-              "speed": 1,
-              "direction": "top",
-              "out_mode": "out"
-            }
-          }
-        }}
-      />}
-      <NavBar/>
-      <Terminal onToggle={setTerminalOpen}/>
-      <Body>
-        <Row>
-          <Col
-            xlg={{size: 6, offset: 3}}
-            md={{size: 8, offset: 2}}
-            sm={{size: 10, offset: 1}}
-            xs={12}
-          >
-            <Content>
-              {children}
-            </Content>
-          </Col>
-        </Row>
-      </Body>
-    </Background>
+    <React.Fragment>
+      <NavBar innerRef={navBarRef}/>
+      <Background>
+        <Helmet>
+          <link rel="stylesheet" href="https://use.typekit.net/app2ftr.css"/>
+          <link rel="stylesheet" type="text/css" href="https://unpkg.com/augmented-ui/augmented.css"/>
+        </Helmet>
+        {/*{!terminalOpen && !md.mobile() && <AutoParticles*/}
+        {/*  params={{*/}
+        {/*    "particles": {*/}
+        {/*      "number": {*/}
+        {/*        "value": 160,*/}
+        {/*        "density": {*/}
+        {/*          "enable": false*/}
+        {/*        }*/}
+        {/*      },*/}
+        {/*      "size": {*/}
+        {/*        "value": 3,*/}
+        {/*        "random": true,*/}
+        {/*        "anim": {*/}
+        {/*          "speed": 4,*/}
+        {/*          "size_min": 0.3*/}
+        {/*        }*/}
+        {/*      },*/}
+        {/*      "line_linked": {*/}
+        {/*        "enable": false*/}
+        {/*      },*/}
+        {/*      "move": {*/}
+        {/*        "random": true,*/}
+        {/*        "speed": 1,*/}
+        {/*        "direction": "top",*/}
+        {/*        "out_mode": "out"*/}
+        {/*      }*/}
+        {/*    }*/}
+        {/*  }}*/}
+        {/*/>}*/}
+        <Body>
+          {/*<Terminal onToggle={setTerminalOpen}/>*/}
+          <StyledRow>
+            <Col
+              xlg={{size: 6, offset: 3}}
+              md={{size: 8, offset: 2}}
+              sm={{size: 10, offset: 1}}
+              xs={12}
+            >
+              <Content>
+                {children}
+              </Content>
+            </Col>
+
+          </StyledRow>
+        </Body>
+        <Footer/>
+      </Background>
+    </React.Fragment>
   )
 }
 

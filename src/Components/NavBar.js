@@ -1,6 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import {Link as BaseLink, useStaticQuery, graphql} from 'gatsby';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  Nav,
+  NavItem
+} from 'reactstrap';
+import logo from '../images/logo.png';
 
 const query = graphql`
     query MyQuery {
@@ -22,24 +30,29 @@ const query = graphql`
         }
     }
 
-`
+`;
 
-const Container = styled.div`
+const Container = styled(Navbar)`
   width:100%;
   position: fixed;
   top: 0;
   z-index: 999;
+  background-color: transparent !important;
+  padding: 0.5rem 0;
   
-  div.menu{
-      width: calc(100% - 2rem);
-      height: 100px;
-      padding: 0.5rem;
+  div.menu {
+      width: 100%;
+      min-height: 100px;
+      padding: 0.5rem 1rem;
       display: inline-block;
       margin: 0 1rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
      
       --aug-inset:7px; 
       --aug-inset-bg: rgba(58, 134, 183); 
-      --aug-inset-opacity: 0.6;
+      --aug-inset-opacity: 1;
       
       --aug-border:5px; 
       --aug-border-bg:rgba(58, 134, 183, 0.7 ); 
@@ -56,18 +69,36 @@ const Container = styled.div`
       --aug-b-offset:0px; 
       --aug-b:150px; 
       --aug-b-height:15px; 
-      --aug-b-width: 500px;
+      --aug-b-width: 19.2%;
+      
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        
+        --aug-bl:10px; 
+        --aug-bl-height:10px; 
+        --aug-bl-width:10px; 
+        
+        --aug-br:10px; 
+        --aug-br-height:10px; 
+        --aug-br-width:10px; 
+        
+        --aug-b:75px; 
+        --aug-b-height:10px; 
+      }
     }
 `;
 
-const Actions = styled.div`
-  width: 100%;
-  height: 100%;
+const Menu = styled(NavbarToggler)`
+  margin: 1rem;
+`;
+
+const MenuCollapse = styled(Collapse)`
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  padding-right: 1rem;
+  
+  @media (max-width: 768px) {
+    padding-bottom: 2rem;
+  }
 `;
 
 const Link = styled(BaseLink)`
@@ -77,31 +108,60 @@ const Link = styled(BaseLink)`
   text-transform: uppercase;
   
   &:hover {
-    color: rgba(128, 164, 58, 0.8);
     text-decoration: none;
+  }
+  
+  @media (max-width: 768px) {
+    padding-right: 0;
   }
 `;
 
+const Logo = styled.img`
+  height: 50px;
+  margin: 1rem;
+`;
+
+const Row = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+
 function NavBar() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const menu = useStaticQuery(query);
   const {prismic: {allMenus: {edges: [ {node: {body: [{fields}]}}]}}} = menu;
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <Container>
+    <Container color="light" light expand="md" opacity={menuOpen ? 1 : 0.6}>
       <div className={`menu`} augmented-ui="bl-clip br-clip b-clip-x exe">
-        <Actions>
-          {fields.map((
-            {
-              label: [
-                { text: label}
-              ],
-              url: [
-                { text: url}
-              ],
-            }, key) => {
-            return <Link key={`menu_${label}`} to={url}>{label}</Link>
-          })}
-        </Actions>
+        <Row>
+          <Link to={`/`}>
+            <Logo src={logo} alt={`logo`}/>
+          </Link>
+          <Menu onClick={toggleMenu} className={`light`} />
+        </Row>
+        <MenuCollapse isOpen={menuOpen} navbar>
+          <Nav navbar>
+             {fields.map((
+               {
+                 label: [
+                   { text: label}
+                 ],
+                 url: [
+                   { text: url}
+                 ],
+               }, key) => {
+               return <NavItem key={`menu_${label}`}><Link to={url}>{label}</Link></NavItem>
+             })}
+          </Nav>
+        </MenuCollapse>
       </div>
     </Container>
   )

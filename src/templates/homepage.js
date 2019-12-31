@@ -6,8 +6,6 @@ import Components from '../Components';
 import get from 'lodash/get';
 
 const Homepage = ({data}) => {
-  console.log(data);
-
   const node = get(data, 'prismic.allHomepages.edges[0].node');
 
   return (

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const StyledButton = styled.div`
   text-align: center;
   color: #000;
+  margin: 1rem;
   
   div:first-child {
       padding: 2rem 1rem 2rem 1.5rem;

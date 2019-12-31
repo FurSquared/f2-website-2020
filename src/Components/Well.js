@@ -15,6 +15,7 @@ const InnerWell = styled.div`
   text-align: center;
   
   .aug {
+      min-height: 250px;
       width: 100%;
       padding: 2rem;
       display: inline-block;
@@ -26,22 +27,22 @@ const InnerWell = styled.div`
       --aug-border:5px; 
       --aug-border-bg:rgba(58, 134, 183, 0.7 ); 
       --aug-border-opacity: 0.9; 
-      
-      --aug-tl:10px; 
-      --aug-tl-height:0px; 
-      --aug-tl-width:0px; 
+     
+      --aug-tl:25px; 
+      --aug-tl-height:25px; 
+      --aug-tl-width:25px; 
       
       --aug-tr:20px; 
       --aug-tr-height:20px; 
-      --aug-tr-width: 250px;; 
+      --aug-tr-width: 250px;;
       
-      --aug-br:20px; 
-      --aug-br-height:0px; 
-      --aug-br-width:0px; 
+      --aug-br:25px; 
+      --aug-br-height:25px; 
+      --aug-br-width:25px; 
       
-      --aug-bl:30px; 
-      --aug-bl-height:30px; 
-      --aug-bl-width:30px; 
+      --aug-bl:25px; 
+      --aug-bl-height:25px; 
+      --aug-bl-width:25px; 
       
       --aug-t:0px; 
       --aug-t-height:0px; 
@@ -58,55 +59,71 @@ const InnerWell = styled.div`
       
       --aug-l-offset:0px; 
       --aug-l:20px; 
-      --aug-l-height: ${props => props.attrs['--aug-l-height']}
+      --aug-l-height: 150px;
+      
+      @media (max-width: 768px) {
+    
+      --aug-bl:10px; 
+      --aug-bl-height:10px; 
+      --aug-bl-width:10px; 
+      
+      --aug-br:10px; 
+      --aug-br-height:10px; 
+      --aug-br-width:10px; 
+      
+      --aug-b:75px; 
+      --aug-b-height:10px; 
+      --aug-b-width: 100px;
+      
+      }
     }
 `;
 
-function useInterval(callback, delay) {
-  const savedCallback = useRef();
+// function useInterval(callback, delay) {
+//   const savedCallback = useRef();
+//
+//   useEffect(() => {
+//     savedCallback.current = callback;
+//   });
+//
+//   useEffect(() => {
+//     function tick() {
+//       savedCallback.current();
+//     }
+//
+//     let id = setInterval(tick, delay);
+//     return () => clearInterval(id);
+//   }, [delay]);
+// }
 
-  useEffect(() => {
-    savedCallback.current = callback;
-  });
-
-  useEffect(() => {
-    function tick() {
-      savedCallback.current();
-    }
-
-    let id = setInterval(tick, delay);
-    return () => clearInterval(id);
-  }, [delay]);
-}
-
-function useAugAnim(position, min, max, speed) {
-  const [dimension, setDimension] = useState(min);
-  const [direction, setDirection] = useState(1);
-
-  useInterval(() => {
-    setDimension(dimension + direction);
-
-    if(direction && dimension >= max) {
-      setDirection(-1);
-    } else if(direction === -1 && dimension <= min) {
-      setDirection(1);
-    }
-
-  }, speed);
-
-  return {[position]: `${dimension}px;`};
-}
+// function useAugAnim(position, min, max, speed) {
+//   const [dimension, setDimension] = useState(min);
+//   const [direction, setDirection] = useState(1);
+//
+//   useInterval(() => {
+//     setDimension(dimension + direction);
+//
+//     if(direction && dimension >= max) {
+//       setDirection(-1);
+//     } else if(direction === -1 && dimension <= min) {
+//       setDirection(1);
+//     }
+//
+//   }, speed);
+//
+//   return {[position]: `${dimension}px;`};
+// }
 
 
 function Well({children}) {
   const styles = {
-    ...useAugAnim('--aug-l-height', 50, 200, 50)
-};
+    // ...useAugAnim('--aug-l-height', 50, 100, 50)
+  };
 
   return (
     <Hero>
       <InnerWell attrs={styles}>
-        <div className={`aug`} augmented-ui="tr-clip-x l-clip-y bl-clip tl-round br-round b-clip-x exe">
+        <div className={`aug`} augmented-ui="tr-clip-x l-clip-y bl-clip tl-clip br-clip b-clip-x exe">
           <Content>
             {children}
           </Content>

@@ -39,11 +39,7 @@ const Container = styled.div`
       --aug-t-height:15px; 
       --aug-t-width: 19.2%;
       
-      @media (max-width: 768px) {
-        flex-direction: column;
-        align-items: center;
-        height: 160px;
-        
+      @media (max-width: 768px) {        
         --aug-tl:10px; 
         --aug-tl-height:10px; 
         --aug-tl-width:10px; 

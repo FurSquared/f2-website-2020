@@ -7,7 +7,6 @@ import Particles from 'react-particles-js';
 import Terminal from './Terminal';
 import NavBar from './NavBar';
 import {Helmet} from 'react-helmet';
-import MobileDetect from 'mobile-detect';
 import Footer from './Footer';
 
 const Background = styled.div`
@@ -23,12 +22,8 @@ const Background = styled.div`
   background-attachment: fixed;
   width: 100%;
   height: 100%;
-  // min-height: 100%;
   min-height: 100vh;
-  // margin-top: -120px;
-  // padding-top: 120px;
   overflow-x: hidden;
-  // overflow-y: auto;
   position: relative;
 `;
 
@@ -63,8 +58,6 @@ const AutoParticles = styled(Particles)`
 const Body = styled.div`
   margin: 150px 0;
   height: 100%;
-  // overflow-y: scroll;
-  // overflow-x: hidden;
 `;
 
 const StyledRow = styled(Row)`
@@ -75,8 +68,6 @@ function Layout({children}) {
   const [terminalOpen, setTerminalOpen] = useState(false);
   const navBarRef = useRef(null);
 
-  const md = new MobileDetect(window.navigator.userAgent);
-
   return (
     <React.Fragment>
       <NavBar innerRef={navBarRef}/>
@@ -85,35 +76,35 @@ function Layout({children}) {
           <link rel="stylesheet" href="https://use.typekit.net/app2ftr.css"/>
           <link rel="stylesheet" type="text/css" href="https://unpkg.com/augmented-ui/augmented.css"/>
         </Helmet>
-        {/*{!terminalOpen && !md.mobile() && <AutoParticles*/}
-        {/*  params={{*/}
-        {/*    "particles": {*/}
-        {/*      "number": {*/}
-        {/*        "value": 160,*/}
-        {/*        "density": {*/}
-        {/*          "enable": false*/}
-        {/*        }*/}
-        {/*      },*/}
-        {/*      "size": {*/}
-        {/*        "value": 3,*/}
-        {/*        "random": true,*/}
-        {/*        "anim": {*/}
-        {/*          "speed": 4,*/}
-        {/*          "size_min": 0.3*/}
-        {/*        }*/}
-        {/*      },*/}
-        {/*      "line_linked": {*/}
-        {/*        "enable": false*/}
-        {/*      },*/}
-        {/*      "move": {*/}
-        {/*        "random": true,*/}
-        {/*        "speed": 1,*/}
-        {/*        "direction": "top",*/}
-        {/*        "out_mode": "out"*/}
-        {/*      }*/}
-        {/*    }*/}
-        {/*  }}*/}
-        {/*/>}*/}
+        {!terminalOpen && <AutoParticles
+          params={{
+            "particles": {
+              "number": {
+                "value": 160,
+                "density": {
+                  "enable": false
+                }
+              },
+              "size": {
+                "value": 3,
+                "random": true,
+                "anim": {
+                  "speed": 4,
+                  "size_min": 0.3
+                }
+              },
+              "line_linked": {
+                "enable": false
+              },
+              "move": {
+                "random": true,
+                "speed": 1,
+                "direction": "top",
+                "out_mode": "out"
+              }
+            }
+          }}
+        />}
         <Body>
           {/*<Terminal onToggle={setTerminalOpen}/>*/}
           <StyledRow>

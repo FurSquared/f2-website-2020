@@ -42,7 +42,11 @@ export const Content = styled.div`
     color: #fff;
   }
   
-  a h1, h2, h3, h4, h5, b, strong {
+  ul {
+    text-align: left;
+  }
+  
+  a, h1, h2, h3, h4, h5, b, strong {
     color: #b7a43a;
   }
 `;

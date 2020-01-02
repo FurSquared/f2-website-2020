@@ -78,12 +78,18 @@ export const query = graphql`
                                     primary_title
                                     primary_content
                                     title_1
+                                    title_1_sub_title_1
+                                    title_1_sub_title_2
                                     image_1
                                     content_1
                                     title_2
+                                    title_2_sub_title_1
+                                    title_2_sub_title_2
                                     image_2
                                     content_2
                                     title_3
+                                    title_3_sub_title_1
+                                    title_3_sub_title_2
                                     image_3
                                     content_3
                                 }

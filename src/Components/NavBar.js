@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import {Link as BaseLink, useStaticQuery, StaticQuery, graphql} from 'gatsby';
+import {Link as BaseLink, StaticQuery, graphql} from 'gatsby';
 import {
   Collapse,
   Navbar,
   NavbarToggler,
   Nav,
-  NavItem
+  NavItem,
+  NavbarText
 } from 'reactstrap';
 import logo from '../images/logo.png';
 
@@ -42,7 +43,7 @@ const Container = styled(Navbar)`
   
   div.menu {
       width: 100%;
-      min-height: 100px;
+      min-height: 120px;
       padding: 0.5rem 1rem;
       display: inline-block;
       margin: 0 1rem;
@@ -125,7 +126,23 @@ const Row = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  
+  .navbar-text {
+    color: #b7a43a;
+    
+    @media (max-width: 768px) {
+      display: none;
+    }
+    
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+  
+  align-items: center;
+  
+  @media (max-width: 768px) {
+    justify-content: space-between;
+  }
 `;
 
 const StyledNavItem = styled(NavItem)`
@@ -134,12 +151,32 @@ const StyledNavItem = styled(NavItem)`
   justify-content: center;
   align-items: center;
   text-align: center;
+  
+  padding-right: 1rem;
+  color: #b7a43a;
+  font-size: 1.45rem;
+  text-transform: uppercase;
+  
+  &:hover {
+    text-decoration: none;
+  }
+  
+  @media (max-width: 768px) {
+    padding-right: 0;
+  }
+`;
+
+const Address = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  span {
+    padding: 0;
+  }
 `;
 
 function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  // const menu = useStaticQuery(query);
-  // const {prismic: {allMenus: {edges: [ {node: {body: [{fields}]}}]}}} = menu;
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -159,6 +196,11 @@ function NavBar() {
                 <Link to={`/`}>
                   <Logo src={logo} alt={`logo`}/>
                 </Link>
+                <Address>
+                  <NavbarText>Sheraton Milwaukee Brookfield</NavbarText>
+                  <NavbarText>375 South Moorland Road </NavbarText>
+                  <NavbarText>Brookfield, Wisconsin 53005</NavbarText>
+                </Address>
                 <Menu onClick={toggleMenu} className={`light`} />
               </Row>
               <MenuCollapse isOpen={menuOpen} navbar>

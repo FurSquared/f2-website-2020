@@ -4,6 +4,13 @@ import Layout from '../Components/Layout';
 import Well from '../Components/Well';
 import Components from '../Components';
 import get from 'lodash/get';
+import {Col, Row} from 'reactstrap';
+import LinkButton from '../Components/LinkButton';
+import styled from 'styled-components';
+
+const FullWidthRow = styled(Row)`
+  width: 100%;
+`;
 
 const Homepage = ({data}) => {
   const node = get(data, 'prismic.allHomepages.edges[0].node');
@@ -14,6 +21,14 @@ const Homepage = ({data}) => {
         <Components>
           {node}
         </Components>
+        <FullWidthRow>
+          <Col sm={6} xs={12}>
+            <LinkButton to={`https://www.marriott.com/event-reservations/reservation-link.mi?id=1565183065412&key=GRP&app=resvlink%22`}>Book Here</LinkButton>
+          </Col>
+          <Col sm={6} xs={12}>
+            <LinkButton to={`/register`}>Register Here</LinkButton>
+          </Col>
+        </FullWidthRow>
       </Well>
     </Layout>
   )

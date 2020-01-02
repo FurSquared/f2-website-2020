@@ -13,15 +13,15 @@ const H3 = styled.h3`
   color: #b7a43a;
 `;
 
-const H4 = styled.h3`
+const H4 = styled.h4`
   color: #b7a43a;
 `;
 
-const H5 = styled.h3`
+const H5 = styled.h5`
   color: #b7a43a;
 `;
 
-const H6 = styled.h3`
+const H6 = styled.h6`
   color: #b7a43a;
 `;
 
@@ -31,23 +31,29 @@ function Title({node}) {
     return null;
   }
 
-  const {text, type} = node;
-
-  switch(type) {
-    default:
-    case 'heading1':
-      return <H1>{text}</H1>;
-    case 'heading2':
-      return <H2>{text}</H2>;
-    case 'heading3':
-      return <H3>{text}</H3>;
-    case 'heading4':
-      return <H4>{text}</H4>;
-    case 'heading5':
-      return <H5>{text}</H5>;
-    case 'heading6':
-      return <H6>{text}</H6>;
+  if(!Array.isArray(node)) {
+    node = [node];
   }
+
+  return node.map((n, k) => {
+    const {text, type} = n;
+
+    switch(type) {
+      default:
+      case 'heading1':
+        return <H1 key={k}>{text}</H1>;
+      case 'heading2':
+        return <H2 key={k}>{text}</H2>;
+      case 'heading3':
+        return <H3 key={k}>{text}</H3>;
+      case 'heading4':
+        return <H4 key={k}>{text}</H4>;
+      case 'heading5':
+        return <H5 key={k}>{text}</H5>;
+      case 'heading6':
+        return <H6 key={k}>{text}</H6>;
+    }
+  })
 }
 
 export default Title;

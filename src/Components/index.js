@@ -70,16 +70,22 @@ function Components({children}) {
           <Row key={key}>
             <Col sm={4} xs={12}>
               <Title node={parts.title_1[0]}/>
+              <Title node={parts.title_1_sub_title_1}/>
+              <Title node={parts.title_1_sub_title_2}/>
               <PrismicImage node={parts.image_1}/>
               {RichText.render(parts.content_1)}
             </Col>
             <Col sm={4} xs={12}>
               <Title node={parts.title_2[0]}/>
+              <Title node={parts.title_2_sub_title_1}/>
+              <Title node={parts.title_2_sub_title_2}/>
               <PrismicImage node={parts.image_2}/>
               {RichText.render(parts.content_2)}
             </Col>
             <Col sm={4} xs={12}>
               <Title node={parts.title_3[0]}/>
+              <Title node={parts.title_3_sub_title_1}/>
+              <Title node={parts.title_3_sub_title_2}/>
               <PrismicImage node={parts.image_3}/>
               {RichText.render(parts.content_3)}
             </Col>

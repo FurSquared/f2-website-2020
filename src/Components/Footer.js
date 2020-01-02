@@ -85,7 +85,7 @@ function Footer() {
             />
           </a>
         </SocialMedia>
-        <FooterText>Copyright © Fur Squared 2019</FooterText>
+        <FooterText>Copyright © Fur Squared 2020</FooterText>
       </div>
     </Container>
   )

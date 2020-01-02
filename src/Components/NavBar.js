@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import {Link as BaseLink, useStaticQuery, graphql} from 'gatsby';
+import {Link as BaseLink, useStaticQuery, StaticQuery, graphql} from 'gatsby';
 import {
   Collapse,
   Navbar,
@@ -11,7 +11,7 @@ import {
 import logo from '../images/logo.png';
 
 const query = graphql`
-    query MyQuery {
+    query MyMenuQuery {
         prismic {
             allMenus {
                 edges {
@@ -128,42 +128,59 @@ const Row = styled.div`
   justify-content: space-between;
 `;
 
+const StyledNavItem = styled(NavItem)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`;
 
 function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const menu = useStaticQuery(query);
-  const {prismic: {allMenus: {edges: [ {node: {body: [{fields}]}}]}}} = menu;
+  // const menu = useStaticQuery(query);
+  // const {prismic: {allMenus: {edges: [ {node: {body: [{fields}]}}]}}} = menu;
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
   return (
-    <Container color="light" light expand="md" opacity={menuOpen ? 1 : 0.6}>
-      <div className={`menu`} augmented-ui="bl-clip br-clip b-clip-x exe">
-        <Row>
-          <Link to={`/`}>
-            <Logo src={logo} alt={`logo`}/>
-          </Link>
-          <Menu onClick={toggleMenu} className={`light`} />
-        </Row>
-        <MenuCollapse isOpen={menuOpen} navbar>
-          <Nav navbar>
-             {fields.map((
-               {
-                 label: [
-                   { text: label}
-                 ],
-                 url: [
-                   { text: url}
-                 ],
-               }, key) => {
-               return <NavItem key={`menu_${label}`}><Link to={url}>{label}</Link></NavItem>
-             })}
-          </Nav>
-        </MenuCollapse>
-      </div>
-    </Container>
+    <StaticQuery
+      query={query}
+      render={data => {
+        const {prismic: {allMenus: {edges: [{node: {body: [{fields}]}}]}}} = data;
+
+        return (
+
+          <Container color="light" light expand="md" opacity={menuOpen ? 1 : 0.6}>
+            <div className={`menu`} augmented-ui="bl-clip br-clip b-clip-x exe">
+              <Row>
+                <Link to={`/`}>
+                  <Logo src={logo} alt={`logo`}/>
+                </Link>
+                <Menu onClick={toggleMenu} className={`light`} />
+              </Row>
+              <MenuCollapse isOpen={menuOpen} navbar>
+                <Nav navbar>
+                  {fields.map((
+                    {
+                      label: [
+                        { text: label}
+                      ],
+                      url: [
+                        { text: url}
+                      ],
+                    }, key) => {
+                    return <StyledNavItem key={`menu_${label}`}><Link to={url}>{label}</Link></StyledNavItem>
+                  })}
+                </Nav>
+              </MenuCollapse>
+            </div>
+          </Container>
+        )
+      }}
+    />
   )
 }
 

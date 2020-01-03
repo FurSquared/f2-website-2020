@@ -67,6 +67,7 @@ module.exports = {
         icon: website.favicon,
       },
     },
+    'gatsby-plugin-resolve-src',
     // Must be placed at the end
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify',

@@ -20,10 +20,10 @@ const Container = styled.div`
       align-items: center;
       
       --aug-inset:7px; 
-      --aug-inset-bg: rgba(58, 134, 183); 
+      --aug-inset-bg: #1e465f; 
       
       --aug-border:5px; 
-      --aug-border-bg:rgba(58, 134, 183, 0.7 ); 
+      --aug-border-bg: #1e465f; 
       --aug-border-opacity: 0.9; 
     
       --aug-tl:30px; 
@@ -65,7 +65,6 @@ const FooterText = styled.div`
 `;
 
 function Footer() {
-
   return (
     <Container>
       <div className={`menu`} augmented-ui="tl-clip tr-clip t-clip-x exe">

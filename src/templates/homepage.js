@@ -1,11 +1,11 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../Components/Layout';
-import Well from '../Components/Well';
-import Components from '../Components';
+import Layout from '../components/Layout';
+import Well from '../components/Well';
+import Components from '../components';
 import get from 'lodash/get';
 import {Col, Row} from 'reactstrap';
-import LinkButton from '../Components/LinkButton';
+import LinkButton from '../components/LinkButton';
 import styled from 'styled-components';
 
 const FullWidthRow = styled(Row)`

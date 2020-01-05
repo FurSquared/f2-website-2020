@@ -10,6 +10,10 @@ import styled from 'styled-components';
 
 const FullWidthRow = styled(Row)`
   width: 100%;
+  .col-sm-6, .col-12 {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 const Homepage = ({data}) => {

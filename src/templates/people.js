@@ -1,9 +1,9 @@
 import React from 'react';
 import {graphql, StaticQuery} from 'gatsby';
-import Well from '../Components/Well';
-import Layout from '../Components/Layout';
+import Well from '../components/Well';
+import Layout from '../components/Layout';
 import get from 'lodash/get';
-import Person from '../Components/Person';
+import Person from '../components/Person';
 import sortBy from 'lodash/sortBy';
 import filter from 'lodash/filter';
 

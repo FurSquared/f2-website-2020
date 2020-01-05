@@ -1,8 +1,8 @@
 import React from 'react'
-import Layout from '../Components/Layout';
-import Well from '../Components/Well';
+import Layout from '../components/Layout';
+import Well from '../components/Well';
 import {graphql} from 'gatsby';
-import Components from '../Components';
+import Components from '../components';
 import get from 'lodash/get';
 import find from 'lodash/find';
 

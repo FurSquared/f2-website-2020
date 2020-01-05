@@ -62,67 +62,19 @@ const InnerWell = styled.div`
       --aug-l-height: 150px;
       
       @media (max-width: 768px) {
-    
-      --aug-bl:10px; 
-      --aug-bl-height:10px; 
-      --aug-bl-width:10px; 
+        --aug-b-width: 100px;
+      }
       
-      --aug-br:10px; 
-      --aug-br-height:10px; 
-      --aug-br-width:10px; 
-      
-      --aug-b:75px; 
-      --aug-b-height:10px; 
-      --aug-b-width: 100px;
-      
+      @media (max-width: 1300px) {
+        --aug-b-width: 120px;
       }
     }
 `;
 
-// function useInterval(callback, delay) {
-//   const savedCallback = useRef();
-//
-//   useEffect(() => {
-//     savedCallback.current = callback;
-//   });
-//
-//   useEffect(() => {
-//     function tick() {
-//       savedCallback.current();
-//     }
-//
-//     let id = setInterval(tick, delay);
-//     return () => clearInterval(id);
-//   }, [delay]);
-// }
-
-// function useAugAnim(position, min, max, speed) {
-//   const [dimension, setDimension] = useState(min);
-//   const [direction, setDirection] = useState(1);
-//
-//   useInterval(() => {
-//     setDimension(dimension + direction);
-//
-//     if(direction && dimension >= max) {
-//       setDirection(-1);
-//     } else if(direction === -1 && dimension <= min) {
-//       setDirection(1);
-//     }
-//
-//   }, speed);
-//
-//   return {[position]: `${dimension}px;`};
-// }
-
-
 function Well({children}) {
-  const styles = {
-    // ...useAugAnim('--aug-l-height', 50, 100, 50)
-  };
-
   return (
     <Hero>
-      <InnerWell attrs={styles}>
+      <InnerWell>
         <div className={`aug`} augmented-ui="tr-clip-x l-clip-y bl-clip tl-clip br-clip b-clip-x exe">
           <Content>
             {children}

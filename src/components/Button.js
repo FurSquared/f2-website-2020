@@ -4,11 +4,19 @@ import styled from 'styled-components';
 const StyledButton = styled.div`
   text-align: center;
   color: #000;
-  margin: 1rem;
+  width: ${props => props.short ? '100%' : '250px'} ;
+  max-width: 400px;
+  cursor: pointer;
   
   div:first-child {
-      padding: 2rem 1rem 2rem 1.5rem;
+      padding: 
+        ${props => props.short ? '1.25rem' : '2rem'} 
+        1rem 
+        ${props => props.short ? '1.25rem' : '2rem'} 
+        1rem;
       display: inline-block;
+      white-space: nowrap;
+      width: 100%;
       
       --aug-inset:7px; 
       --aug-inset-bg: #b7a43a; 
@@ -25,14 +33,13 @@ const StyledButton = styled.div`
       --aug-bl:15px; 
       --aug-bl-height:15px; 
       --aug-bl-width:15px; 
-      
     }
 `;
 
-function Button({children, onClick}) {
+function Button({children, onClick, short = false}) {
   return (
-    <StyledButton>
-      <div augmented-ui="tr-clip bl-clip exe" onClick={onClick}>
+    <StyledButton className={`button`} short={short}>
+      <div augmented-ui="tr-clip bl-clip exe" onClick={onClick && onClick}>
         {children}
       </div>
     </StyledButton>

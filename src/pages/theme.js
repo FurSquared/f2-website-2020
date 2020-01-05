@@ -1,9 +1,9 @@
 import React from 'react';
 import {graphql, useStaticQuery, Link, StaticQuery} from 'gatsby';
-import Well from '../Components/Well';
-import Layout from '../Components/Layout';
+import Well from '../components/Well';
+import Layout from '../components/Layout';
 import get from 'lodash/get';
-import Title from '../Components/Title';
+import Title from '../components/Title';
 import RichText from 'prismic-reactjs/src/Component';
 import styled from 'styled-components';
 

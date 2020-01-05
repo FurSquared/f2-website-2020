@@ -33,7 +33,7 @@ function Theme() {
             <Title node={nodes.title[0]}/>
             <ThemeStyles>
               {RichText.render(nodes.invitation)}
-              <Link to={`/corporation`}>Join u<strong>s.</strong></Link><p> The future is now. Reality Cubed.</p>
+              <Link to={`/corporation`}>Join u<strong>s.</strong></Link><p> The fu<strong>t</strong>ure is now. Reality Cubed.</p>
             </ThemeStyles>
             {RichText.render(nodes.content)}
           </Well>

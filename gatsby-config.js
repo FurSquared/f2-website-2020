@@ -53,7 +53,30 @@ module.exports = {
         trackingId: website.googleAnalyticsID,
       },
     },
-    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        exclude: [
+          '/013distrust',
+          '/corporation'
+        ]
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://fursquared.com',
+        sitemap: 'https://fursquared.com/sitemap.xml',
+        env: {
+          development: {
+            policy: [{ userAgent: '*', disallow: ['/'] }]
+          },
+          production: {
+            policy: [{ userAgent: '*', allow: '/' }]
+          }
+        }
+      }
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {

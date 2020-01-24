@@ -46,7 +46,7 @@ const menus = [
     type: 'submenu',
     items: [
       {
-        to: 'http://sched.fursquared.com',
+        to: '/events',
         label: 'Schedule'
       },
       {

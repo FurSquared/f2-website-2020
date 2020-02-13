@@ -42,6 +42,18 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
         
+        allImage_lists {
+          edges {
+            node {
+              _meta {
+                id
+                type
+              }
+              path
+            }
+          }
+        }
+        
       }
     }
   `);
@@ -59,6 +71,7 @@ exports.createPages = async ({ graphql, actions }) => {
         path
       } = edge.node;
 
+      console.log(id, type, path);
       const url = type === 'homepage' ? '/' : (path ? path : type);
 
       console.log(`Creating ${type} at ${url}`);

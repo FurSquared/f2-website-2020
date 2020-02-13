@@ -69,6 +69,7 @@
     "react-dom": "^16.12.0",
     "react-fps-stats": "^0.1.2",
     "react-helmet": "^5.2.1",
+    "react-modal-image": "^2.5.0",
     "react-particles-js": "^2.7.0",
     "react-snake-game": "^1.0.9",
     "react-terminal-component": "^1.4.1",

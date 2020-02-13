@@ -52,6 +52,10 @@ const menus = [
       {
         to: '/theme',
         label: 'Theme'
+      },
+      {
+        to: '/map',
+        label: 'Map'
       }
     ]
   },

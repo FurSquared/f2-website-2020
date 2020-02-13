@@ -8,16 +8,9 @@ import find from 'lodash/find';
 import Images from '../components/ImageList';
 
 const ImageList = ({data, pageContext: {id}}) => {
-  console.log(data);
   const edges = get(data, 'prismic.allImage_lists.edges');
-
   const node = get(find(edges, edge => edge.node._meta.id.toString() === id.toString()), 'node');
-
-  console.log(node);
-
   const images = get(node, 'body[0].fields');
-
-  console.log(images);
 
   return (
     <Layout>

@@ -87,6 +87,11 @@ const menus = [
     type: 'menu',
     to: '/contact',
   },
+  {
+    label: 'Code of Conduct',
+    type: 'menu',
+    to: '/code_of_conduct',
+  },
 ];
 
 const Logo = styled.img`

@@ -87,11 +87,6 @@ const menus = [
     type: 'menu',
     to: '/contact',
   },
-  {
-    label: 'Code of Conduct',
-    type: 'menu',
-    to: 'https://docs.google.com/document/d/1n4He3j4xjSjHuzeAmnxh8z6iqMQNiZNB7yy9-sLPgw8/edit?usp=sharing',
-  },
 ];
 
 const Logo = styled.img`

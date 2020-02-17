@@ -48,6 +48,14 @@ module.exports = {
     //   },
     // },
     {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: '/src/images/' // See below to configure properly
+        }
+      }
+    },
+    {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: website.googleAnalyticsID,

@@ -2,11 +2,10 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout';
 import Well from '../components/Well';
-import Components from '../components';
 import get from 'lodash/get';
 import {Col, Row} from 'reactstrap';
-import LinkButton from '../components/LinkButton';
 import styled from 'styled-components';
+import invitation from '../images/invitation.png';
 
 const FullWidthRow = styled(Row)`
   width: 100%;
@@ -16,21 +15,21 @@ const FullWidthRow = styled(Row)`
   }
 `;
 
-const Homepage = ({data}) => {
-  const node = get(data, 'prismic.allHomepages.edges[0].node');
+const Invitation = styled.img`
+  // width: 100%;
+ height: calc(100vh - 50px);
+`;
 
+const Homepage = ({data}) => {
   return (
     <Layout>
       <Well>
-        <Components>
-          {node}
-        </Components>
         <FullWidthRow>
-          <Col sm={6} xs={12}>
-            <LinkButton to={`https://www.marriott.com/event-reservations/reservation-link.mi?id=1565183065412&key=GRP&app=resvlink%22`}>Book Here</LinkButton>
-          </Col>
-          <Col sm={6} xs={12}>
-            <LinkButton to={`/register`}>Register Here</LinkButton>
+          <Col
+            sm={{offset: 2, size: 8}}
+            xs={12}
+          >
+            <Invitation src={invitation} alt={'invitation'}/>
           </Col>
         </FullWidthRow>
       </Well>

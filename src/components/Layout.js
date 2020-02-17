@@ -1,20 +1,28 @@
-import React, {useState, useRef} from 'react';
+import React, {useRef} from 'react';
 import styled from 'styled-components';
 import background from '../images/background.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Col, Row} from 'reactstrap'
-import Particles from 'react-particles-js';
-import Terminal from './Terminal';
 import NavBar from './NavBar';
 import {Helmet} from 'react-helmet';
 import Footer from './Footer';
+import { createGlobalStyle } from 'styled-components';
+import Block from '../fonts/Serendior-Block.otf';
+import Regular from '../fonts/Serendior-Regular.otf';
+
+const GlobalStyles = createGlobalStyle`
+    @font-face {
+        font-family: 'Serendior';
+        src: local('Font Name'), local('FontName'),
+        url(${Regular}) format('otf'),
+        url(${Block}) format('otf');
+        font-weight: 300;
+        font-style: normal;
+    }
+`;
 
 const Background = styled.div`
   background:
-    linear-gradient(
-      rgba(0, 0, 0, 0.65), 
-      rgba(0, 0, 0, 0.65)
-    ),
     url('${background}');
   background-repeat: no-repeat;
   background-size: cover;
@@ -51,16 +59,7 @@ export const Content = styled.div`
   }
 `;
 
-const AutoParticles = styled(Particles)`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-`;
-
 const Body = styled.div`
-  margin: 150px 0;
   height: 100%;
 `;
 
@@ -69,48 +68,17 @@ const StyledRow = styled(Row)`
 `;
 
 function Layout({children}) {
-  const [terminalOpen, setTerminalOpen] = useState(false);
   const navBarRef = useRef(null);
 
   return (
     <React.Fragment>
-      <NavBar innerRef={navBarRef}/>
+      <GlobalStyles/>
+      {/*<NavBar innerRef={navBarRef}/>*/}
       <Background>
         <Helmet>
-          <link rel="stylesheet" href="https://use.typekit.net/app2ftr.css"/>
-          <link rel="stylesheet" type="text/css" href="https://unpkg.com/augmented-ui/augmented.css"/>
+          <link href="https://fonts.googleapis.com/css?family=Lora|Open+Sans&display=swap" rel="stylesheet"/>
         </Helmet>
-        {!terminalOpen && <AutoParticles
-          params={{
-            "particles": {
-              "number": {
-                "value": 160,
-                "density": {
-                  "enable": false
-                }
-              },
-              "size": {
-                "value": 3,
-                "random": true,
-                "anim": {
-                  "speed": 4,
-                  "size_min": 0.3
-                }
-              },
-              "line_linked": {
-                "enable": false
-              },
-              "move": {
-                "random": true,
-                "speed": 1,
-                "direction": "top",
-                "out_mode": "out"
-              }
-            }
-          }}
-        />}
         <Body>
-          {/*<Terminal onToggle={setTerminalOpen}/>*/}
           <StyledRow>
             <Col
               xlg={{size: 6, offset: 3}}
@@ -122,10 +90,9 @@ function Layout({children}) {
                 {children}
               </Content>
             </Col>
-
           </StyledRow>
         </Body>
-        <Footer/>
+        {/*<Footer/>*/}
       </Background>
     </React.Fragment>
   )

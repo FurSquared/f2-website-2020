@@ -20,6 +20,11 @@ import {faBars} from '@fortawesome/free-solid-svg-icons';
 
 const menus = [
   {
+    label: 'Feedback',
+    type: 'menu',
+    to: 'http://bit.ly/f2-2020Feedback'
+  },
+  {
     label: 'About the Con',
     type: 'submenu',
     items: [

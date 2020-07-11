@@ -25,77 +25,9 @@ const menus = [
     to: 'http://bit.ly/f2-2020Feedback'
   },
   {
-    label: 'About the Con',
-    type: 'submenu',
-    items: [
-      {
-        to: '/register',
-        label: 'Register'
-      },
-      {
-        to: '/hotel',
-        label: 'Hotel'
-      },
-      {
-        to: '/guests',
-        label: 'Guests'
-      },
-      {
-        to: '/charity',
-        label: 'Charity'
-      },
-    ]
-  },
-  {
-    label: 'Programming & Events',
-    type: 'submenu',
-    items: [
-      {
-        to: '/events',
-        label: 'Schedule'
-      },
-      {
-        to: '/theme',
-        label: 'Theme'
-      },
-      {
-        to: '/dance',
-        label: 'Dance'
-      },
-      {
-        to: '/map',
-        label: 'Map'
-      }
-    ]
-  },
-  {
-    label: 'Artists & Dealers',
-    type: 'submenu',
-    items: [
-      {
-        to: '/artists',
-        label: 'Artist Alley'
-      },
-      {
-        to: '/dealers',
-        label: 'Dealers Den'
-      }
-    ]
-  },
-  {
-    label: 'Volunteer',
-    type: 'menu',
-    to: '/volunteer',
-  },
-  {
     label: 'Contact',
     type: 'menu',
     to: '/contact',
-  },
-  {
-    label: 'Code of Conduct',
-    type: 'menu',
-    to: '/code_of_conduct',
   },
 ];
 

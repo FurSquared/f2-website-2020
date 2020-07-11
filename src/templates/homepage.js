@@ -25,14 +25,6 @@ const Homepage = ({data}) => {
         <Components>
           {node}
         </Components>
-        <FullWidthRow>
-          <Col sm={6} xs={12}>
-            <LinkButton to={`https://www.marriott.com/event-reservations/reservation-link.mi?id=1565183065412&key=GRP&app=resvlink%22`}>Book Here</LinkButton>
-          </Col>
-          <Col sm={6} xs={12}>
-            <LinkButton to={`/register`}>Register Here</LinkButton>
-          </Col>
-        </FullWidthRow>
       </Well>
     </Layout>
   )

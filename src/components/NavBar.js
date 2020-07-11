@@ -106,21 +106,21 @@ function NavBar() {
       <NavbarBrand href="/">
         <Logo src={logo} alt={`logo`}/>
       </NavbarBrand>
-      <StyledNavbarText>Feb 14-16, 2020</StyledNavbarText>
-      <HotelAddressGroup
-        href={`https://www.google.com/maps/dir/41.87706,-87.634235/marriott+sheraton+brookfield+wi/@42.4594149,-88.4855225,9z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x8805066a15624b75:0xbf0f0d2ba2a3fa80!2m2!1d-88.1080261!2d43.0270865`}
-        target={`_blank`}
-      >
-        <HotelAddressLine>
-          Sheraton Milwaukee Brookfield Hotel
-        </HotelAddressLine>
-        <HotelAddressLine>
-          375 S Moorland Rd.
-        </HotelAddressLine>
-        <HotelAddressLine>
-          Brookfield, WI 53005
-        </HotelAddressLine>
-      </HotelAddressGroup>
+      {/*<StyledNavbarText>Feb 14-16, 2020</StyledNavbarText>*/}
+      {/*<HotelAddressGroup*/}
+      {/*  href={`https://www.google.com/maps/dir/41.87706,-87.634235/marriott+sheraton+brookfield+wi/@42.4594149,-88.4855225,9z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x8805066a15624b75:0xbf0f0d2ba2a3fa80!2m2!1d-88.1080261!2d43.0270865`}*/}
+      {/*  target={`_blank`}*/}
+      {/*>*/}
+      {/*  <HotelAddressLine>*/}
+      {/*    Sheraton Milwaukee Brookfield Hotel*/}
+      {/*  </HotelAddressLine>*/}
+      {/*  <HotelAddressLine>*/}
+      {/*    375 S Moorland Rd.*/}
+      {/*  </HotelAddressLine>*/}
+      {/*  <HotelAddressLine>*/}
+      {/*    Brookfield, WI 53005*/}
+      {/*  </HotelAddressLine>*/}
+      {/*</HotelAddressGroup>*/}
       <NavbarToggler onClick={toggleMenu} icon={faBars} size={`2x`}/>
       <Collapse isOpen={menuOpen} navbar>
         <StyledNav className="ml-auto" navbar>
